@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>AT Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+      rel="stylesheet"
+    />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/admin/css/index.css" />
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="admin.html">Quản Lý Bán Hàng</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form> -->
+      <!-- Navbar-->
+      <ul class="navbar-nav m-auto me-lg-5">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+            id="userAccount"
+          >
+            <!-- <li><a class="dropdown-item" href="">Cài đặt</a></li>
+                        
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="">Đăng xuất</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" href="index.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                Thống kê
+              </a>
+              <div class="sb-sidenav-menu-heading">Interface</div>
+
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Danh Mục
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addCategory.html"
+                      >Thêm Danh Mục</a
+                    >
+                    <a class="nav-link btnCategory" href="./category.html"
+                      >Danh Sách Danh Mục</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts2"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Ảnh Sản Phẩm
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts2"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addGallery.html">Thêm Ảnh</a>
+                    <a class="nav-link btnGallery" href="./gallery.html"
+                      >Danh Sách Ảnh Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts5"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Màu Sắc
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts5"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addColor.html">Thêm Màu Sắc</a>
+                    <a class="nav-link btnColor" href="./color.html"
+                      >Danh Sách Màu Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts3"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Sản Phẩm
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts3"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addProduct.html"
+                      >Thêm Sản Phẩm</a
+                    >
+                    <a class="nav-link btnProduct" href="./product.html"
+                      >Danh Sách Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts9"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Giảm Giá
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts9"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addSale.html">Thêm Giảm Giá</a>
+                    <a class="nav-link btnSale" href="./sale.html"
+                      >Danh Sách Giảm Giá</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts4"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Tài Khoản
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts4"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnAccount" href="./account.html"
+                      >Danh Sách Tài Khoản</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts6"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Bình Luận
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts6"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnComment" href="./comment.html"
+                      >Danh Sách Bình Luân</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts7"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Slide
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts7"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addSlide.html">Thêm Slide</a>
+                    <a class="nav-link btnSlide" href="./slide.html"
+                      >Danh Sách Slide</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts8"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Đơn Hàng
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts8"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnOrder" href="./order.html"
+                      >Duyệt Đơn Hàng</a
+                    >
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:<p id="loginName" style="font-size: 13px; font-weight: bold;"></p> </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="card">
+            <div class="card-header">
+              <h2>Thống kê</h2>
+            </div>
+            <div style="display: flex">
+              <div style="margin: 20px 20px">
+                <label for="selectYear">Năm: </label>
+                <select
+                  id="selectYear"
+                  style="padding: 3px 5px"
+                  onchange="revenue(this.value)"
+                >
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023" selected>2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                </select>
+              </div>
+
+              <div class="kpi-card orange" id="orange">
+                <span class="card-value"></span>VNĐ
+
+                <span class="card-text">Tổng doanh thu năm</span>
+                <i class="fas fa-shopping-cart icon"></i>
+              </div>
+            </div>
+            <div class="container">
+              <canvas id="myChart" height="auto" width="500px"></canvas>
+              <p style="margin-left: 40%">
+                <i>Biểu đồ thống kê doanh thu theo tháng</i>
+              </p>
+              <canvas
+                style="width: 500px; height: auto"
+                id="quantityStatisticChart"
+              ></canvas>
+              <p style="margin-left: 39%">
+                <i>Biểu đồ thống kê số lượng còn lại trong kho</i>
+              </p>
+            </div>
+            <script>
+              $(document).ready(function () {
+                let year = document.getElementById("selectYear").value;
+                revenue(year);
+                quantityStatistic();
+              });
+              
+              function quantityStatistic() {
+                let url = "http://localhost:9090/productcolor/getStatistic";
+                $.get(url, function (data) {
+                  console.log(data);
+                  quantityStatisticChart(data);
+                });
+
+                function quantityStatisticChart(data) {
+                  var brand = [];
+                  var quantity = [];
+
+                  data.forEach((e) => {
+                    brand.push(e.name);
+                    quantity.push(e.amount);
+                  });
+
+                  let quantityStatisticChart = document
+                    .getElementById("quantityStatisticChart")
+                    .getContext("2d");
+                  Chart.defaults.global.defaultFontFamily = "Lato";
+                  Chart.defaults.global.defaultFontSize = 18;
+                  Chart.defaults.global.defaultFontColor = "#777";
+
+                  let massPopChart = new Chart(quantityStatisticChart, {
+                    type: "doughnut",
+                    data: {
+                      labels: brand,
+                      datasets: [
+                        {
+                          label: "Số lượng còn lại ",
+                          data: quantity,
+                          backgroundColor: [
+                            "rgba(255, 99, 132, 0.6)",
+                            "rgba(255, 206,86, 0.6)",
+                            "rgba(54, 162, 235, 0.6)",
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(153, 102, 256, 0.6)",
+                            "rgba(255, 159, 64, 0.6)",
+                            "rgba(255, 99, 132, 0.6)",
+                            "rgba(154, 138, 138, 0.6)",
+                            "rgba(176, 138, 138, 0.6)",
+                            "rgba(139, 166, 138, 0.6)",
+                            "rgba(139, 166, 176, 0.6)",
+                          ],
+                          borderWidth: 1,
+                          borderColor: "#777",
+                          hoverBorderWidth: 2,
+                          hoverBorderColor: "#022",
+                        },
+                      ],
+                    },
+                    options: {
+                      //   scales: {
+                      //     y: {
+                      //       beginAtZero: true,
+                      //     },
+                      //   },
+                      //   responsive: false,
+                      //   maintainAspectRatio: false,
+                      //   width: 400,
+                      //   height: 200,
+                      title: {
+                        display: true,
+                        text: "Biểu đồ thống kê số lượng sản phẩm còn lại trong kho",
+                        fontSize: 25,
+                      },
+                      legend: {
+                        display: false,
+                        position: "left",
+                        labels: {
+                          fontColor: "#000",
+                        },
+                      },
+                    },
+                  });
+                }
+              }
+              function revenue(year) {
+                var url = "http://localhost:9090/order/revenue/" + year;
+                $.get(url, function (data) {
+                  console.log(data);
+                  changeByYear(data);
+                });
+                function changeByYear(data) {
+                  var month = new Array(12).fill(0);
+                  var dataByMonth = new Array(12).fill(0);
+                  var total = 0;
+                  for (let index = 0; index < data.length; index++) {
+                    total += data[index].totalMonth;
+                    month[data[index].month - 1] = data[index].month;
+                    dataByMonth[data[index].month - 1] = data[index].totalMonth;
+                  }
+                  document.getElementById("orange").innerHTML =
+                    `<span class="card-value">` +
+                    numberWithCommas(total) +
+                    `</span>VNĐ
+
+                    <span class="card-text">Tổng doanh thu năm: ` +
+                    year +
+                    `</span>
+                    <i class="fas fa-shopping-cart icon"></i>`;
+
+                  let myChart = document
+                    .getElementById("myChart")
+                    .getContext("2d");
+                  Chart.defaults.global.defaultFontFamily = "Lato";
+                  Chart.defaults.global.defaultFontSize = 18;
+                  Chart.defaults.global.defaultFontColor = "#777";
+
+                  let massPopChart = new Chart(myChart, {
+                    type: "bar",
+                    data: {
+                      labels: [
+                        "Tháng 1",
+                        "Tháng 2",
+                        "Tháng 3",
+                        "Tháng 4",
+                        "Tháng 5",
+                        "Tháng 6",
+                        "Tháng 7",
+                        "Tháng 8",
+                        "Tháng 9",
+                        "Tháng 10",
+                        "Tháng 11",
+                        "Tháng 12",
+                      ],
+                      datasets: [
+                        {
+                          label: "Doanh số " + year,
+                          data: dataByMonth,
+                          backgroundColor: [
+                            " rgba(46, 138, 138, 0.3)",
+                            "rgba(255, 99, 132, 0.6)",
+                            "rgba(255, 206,86, 0.6)",
+                            "rgba(54, 162, 235, 0.6)",
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(153, 102, 256, 0.6)",
+                            "rgba(255, 159, 64, 0.6)",
+                            "rgba(255, 99, 132, 0.6)",
+                            "rgba(154, 138, 138, 0.6)",
+                            "rgba(176, 138, 138, 0.6)",
+                            "rgba(139, 166, 138, 0.6)",
+                            "rgba(139, 166, 176, 0.6)",
+                          ],
+                          borderWidth: 1,
+                          borderColor: "#777",
+                          hoverBorderWidth: 2,
+                          hoverBorderColor: "#022",
+                        },
+                      ],
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: "Biểu đồ thống kê doanh thu bán hàng theo tháng",
+                        fontSize: 25,
+                      },
+                      legend: {
+                        display: false,
+                        position: "right",
+                        labels: {
+                          fontColor: "#000",
+                        },
+                      },
+                      layout: {
+                        padding: {
+                          left: 50,
+                          right: 10,
+                          bottom: 20,
+                          top: 20,
+                        },
+                      },
+                      tooltips: {
+                        enabled: true,
+                      },
+                      locale: 'en-IN',
+                      scales:{
+                        y:{
+                          beginAtZero:true
+                        }
+                      }
+                    },
+                  });
+                }
+              }
+            </script>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/datatables-simple-demo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- infor user admin -->
+    <script>
+      let user = {};
+      let storage = localStorage.getItem("userAdmin");
+      if (storage) {
+        user = JSON.parse(storage);
+
+        $("#userAccount").html(
+          `
+                    <li><a class="dropdown-item" style="font-size:12px; font-weight:bold; cursor:pointer;" href="">` +
+            user.fullname +
+            `</a></li>
+                    
+                    <li><hr class="dropdown-divider" /></li>
+                    
+                    <li><a class="dropdown-item" onclick="logout()" style="cursor:pointer;">Đăng xuất</a></li>
+              `
+        );
+        $("#loginName").html(user.fullname);
+      } else {
+        $("#userAccount").html(`
+              <a href="/Template_FrontEnd/login.html">Đăng nhập</a>
+              `);
+      }
+      function logout() {
+        localStorage.removeItem("userAdmin");
+        window.location.href = "/Template_FrontEnd/login.html";
+      }
+    </script>
+    <script>
+      function formatDate(data) {
+        //format date
+        var date = new Date(data);
+        var day = date.getDate();
+        var month = date.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+        var year = date.getFullYear();
+        var dateString =
+          day +
+          "-" +
+          month.toString().padStart(2, "0") +
+          "-" +
+          year.toString().padStart(2, "0");
+
+        return dateString;
+      }
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    </script>
+  </body>
+</html>

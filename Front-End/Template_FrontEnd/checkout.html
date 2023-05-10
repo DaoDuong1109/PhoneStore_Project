@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment</title>
+
+    <link rel="icon" href="./img//logo/logo_product.jpg" type="image/x-icon" />
+    <!-- Google Fonts -->
+    <link
+      href="http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Raleway:400,100"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/Template_FrontEnd/js/shoppingCart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+
+  <body>
+    <div class="mainmenu-area">
+      <div class="navbar">
+        <div class="logo col-md-2">
+          <a href="./index.html" style="margin: 0 auto"
+            ><img class="img-logo" src="/img/logo/logo_product.jpg"
+          /></a>
+        </div>
+        <div class="list-itemP col-md-8">
+          <div class="navbar-collapse collapse item-P">
+            <ul class="nav navbar-nav">
+              <li><a class="active-P clb" href="index.html">Trang chủ</a></li>
+              <li>
+                <a class="clb sanpham" href="aboutUs.html">Về chúng tôi</a>
+              </li>
+              <li><a class="clb sanpham" href="shop.html">Sản phẩm</a></li>
+              <li><a class="clb sanpham" href="#footer">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2 list-itemP">
+          <div class="shopping-item">
+            <a href="cart.html"
+              >Giỏ hàng
+
+              <i class="fa fa-shopping-cart"></i>
+              <span class="product-count" id="product-count"></span
+            ></a>
+          </div>
+        </div>
+        <div class="col-md-2 icon-user">
+          <div class="dropdown">
+            <button class="nut_dropdown">
+              <i class="fa-solid fa-user"></i>
+            </button>
+            <div class="noidung_dropdown" id="noidung_dropdown"></div>
+            <script>
+              let user = {};
+              let storage = localStorage.getItem("user");
+              if (storage) {
+                user = JSON.parse(storage);
+                $("#noidung_dropdown").html(
+                  `
+                  <a href="/Template_FrontEnd/personal-order.html" style="font-size:12px; font-weight:bold; cursor:pointer;">` +
+                    user.email +
+                    `</a>
+                  <a href="" onclick="logout()">Đăng xuất</a>
+                  `
+                );
+              } else {
+                $("#noidung_dropdown").html(`
+                  <a href="/Template_FrontEnd/login.html">Đăng nhập</a>
+                  `);
+              }
+
+              function logout() {
+                localStorage.removeItem("user");
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End mainmenu area -->
+
+    <div class="product-big-title-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="product-bit-title text-center">
+              <h2>Đặt hàng</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="single-product-area">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="product-content-right">
+              <div class="woocommerce">
+                <!-- <div class="woocommerce-info">Returning customer? <a class="showlogin"
+                                    data-toggle="collapse" href="#login-form-wrap" aria-expanded="false"
+                                    aria-controls="login-form-wrap">Click here to login</a>
+                            </div> -->
+
+                <!-- <form id="login-form-wrap" class="login collapse" method="post">
+                  <p>
+                    If you have shopped with us before, please enter your
+                    details in the boxes below. If you are a new customer please
+                    proceed to the Billing &amp; Shipping section.
+                  </p>
+
+                  <p class="form-row form-row-first">
+                    <label for="username"
+                      >Username or email <span class="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      class="input-text"
+                    />
+                  </p>
+                  <p class="form-row form-row-last">
+                    <label for="password"
+                      >Password <span class="required">*</span>
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      class="input-text"
+                    />
+                  </p>
+                  <div class="clear"></div>
+
+                  <p class="form-row">
+                    <input
+                      type="submit"
+                      value="Login"
+                      name="login"
+                      class="button"
+                    />
+                    <label class="inline" for="rememberme"
+                      ><input
+                        type="checkbox"
+                        value="forever"
+                        id="rememberme"
+                        name="rememberme"
+                      />
+                      Remember me
+                    </label>
+                  </p>
+                  <p class="lost_password">
+                    <a href="#">Lost your password?</a>
+                  </p>
+
+                  <div class="clear"></div>
+                </form> -->
+
+                <!-- <div class="woocommerce-info">Have a coupon? <a class="showcoupon" data-toggle="collapse"
+                                    href="#coupon-collapse-wrap" aria-expanded="false"
+                                    aria-controls="coupon-collapse-wrap">Click here to enter your code</a>
+                            </div> -->
+
+                <!-- <form
+                  id="coupon-collapse-wrap"
+                  method="post"
+                  class="checkout_coupon collapse"
+                >
+                  <p class="form-row form-row-first">
+                    <input
+                      type="text"
+                      value=""
+                      id="coupon_code"
+                      placeholder="Coupon code"
+                      class="input-text"
+                      name="coupon_code"
+                    />
+                  </p>
+
+                  <p class="form-row form-row-last">
+                    <input
+                      type="submit"
+                      value="Apply Coupon"
+                      name="apply_coupon"
+                      class="button"
+                    />
+                  </p>
+
+                  <div class="clear"></div>
+                </form> -->
+
+                <form
+                  enctype="multipart/form-data"
+                  action="#"
+                  class="checkout"
+                  method="post"
+                  name="checkout"
+                  id="checkout"
+                >
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div id="customer_details" class="col2-set">
+                        <div class="col-1">
+                          <div class="woocommerce-billing-fields">
+                            <h3>Thông tin đơn hàng</h3>
+                            <!-- fullname -->
+                            <p
+                              id="billing_first_name_field"
+                              class="form-row form-row-first validate-required"
+                            >
+                              <label class="" for="billing_first_name"
+                                >Họ tên khách hàng:<abbr
+                                  title="required"
+                                  class="required"
+                                  >*</abbr
+                                >
+                              </label>
+                              <input
+                                type="text"
+                                value=""
+                                placeholder=""
+                                id="billing_fullname"
+                                name="billing_fullname"
+                                required
+                                class="input-text"
+                              />
+                            </p>
+                            <!-- email -->
+                            <p
+                              id="billing_address_1_field"
+                              class="form-row form-row-wide address-field validate-required"
+                            >
+                              <label class="" for="billing_address_1"
+                                >Email:<abbr title="required" class="required"
+                                  >*</abbr
+                                >
+                              </label>
+
+                              <input
+                                type="text"
+                                value=""
+                                placeholder="email"
+                                id="billing_email"
+                                name="billing_email"
+                                class="input-text"
+                                required
+                              />
+                            </p>
+                            <!-- số điện thoại -->
+                            <p
+                              id="billing_phone_field"
+                              class="form-row form-row-last validate-required validate-phone"
+                            >
+                              <label class="" for="billing_phone"
+                                >Số điện thoại
+                                <abbr title="required" class="required">*</abbr>
+                              </label>
+                              <input
+                                type="text"
+                                value=""
+                                placeholder=""
+                                id="billing_phone"
+                                name="billing_phone"
+                                class="input-text"
+                                required
+                              />
+                            </p>
+
+                            <!-- city -->
+                            <!-- <p
+                              id="billing_address_1_field"
+                              class="form-row form-row-wide address-field validate-required"
+                            >
+                              <label class="" for="city"
+                                >Tỉnh/ Thành phố:
+                                <abbr title="required" class="required">*</abbr>
+                              </label>
+                              <select
+                                class="form-select form-select-sm mb-3"
+                                id="city"
+                                aria-label=".form-select-sm"
+                              >
+                                <option value="" selected>
+                                  Chọn tỉnh thành
+                                </option>
+                              </select>
+                            </p> -->
+                            <!-- district -->
+                            <!-- <p
+                              id="billing_address_1_field"
+                              class="form-row form-row-wide address-field validate-required"
+                            >
+                              <label class="" for="district"
+                                >Quận/ Huyện:
+                                <abbr title="required" class="required">*</abbr>
+                              </label>
+                              <select
+                                class="form-select form-select-sm mb-3"
+                                id="district"
+                                aria-label=".form-select-sm"
+                              >
+                                <option value="" selected>
+                                  Chọn quận huyện
+                                </option>
+                              </select>
+                            </p> -->
+                            <!-- ward -->
+                            <!-- <p
+                              id="billing_address_1_field"
+                              class="form-row form-row-wide address-field validate-required"
+                            >
+                              <label class="" for="ward"
+                                >Phường / Xã:
+                                <abbr title="required" class="required">*</abbr>
+                              </label>
+                              <select
+                                class="form-select form-select-sm"
+                                id="ward"
+                                aria-label=".form-select-sm"
+                              >
+                                <option value="" selected id="">
+                                  Chọn phường xã
+                                </option>
+                              </select>
+                            </p> -->
+                            <!-- địa chỉ -->
+                            <p
+                              id="billing_address_1_field"
+                              class="form-row form-row-wide address-field validate-required"
+                            >
+                              <label class="" for="billing_address_detail"
+                                >Địa chỉ nhận hàng:
+                                <abbr title="required" class="required">*</abbr>
+                              </label>
+                              <input
+                                type="text"
+                                value=""
+                                required
+                                placeholder="Địa chỉ nhận hàng"
+                                id="billing_address_detail"
+                                name="billing_address_detail"
+                                class="input-text"
+                              />
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8">
+                      <h3 id="order_review_heading">Đơn hàng</h3>
+
+                      <div id="order_review" style="position: relative">
+                        <table cellspacing="0" class="shop_table cart">
+                          <thead>
+                            <tr>
+                              <th class="product-remove">&nbsp;</th>
+
+                              <th class="product-name">Sản phẩm</th>
+                              <th class="product-name">Màu sắc</th>
+                              <th class="product-price">Giá tiền</th>
+                              <th class="product-quantity">Số lượng</th>
+                              <th class="product-subtotal">Tổng tiền</th>
+                            </tr>
+                          </thead>
+                          <tbody id="cartBody"></tbody>
+                          <tfoot>
+                            <tr>
+                              <td
+                                colspan="4"
+                                style="font-weight: bold; font-size: 15px"
+                              >
+                                Phí ship
+                              </td>
+                              <td colspan="2">Miễn phí</td>
+                            </tr>
+                            <tr>
+                              <td
+                                colspan="4"
+                                style="font-weight: bold; font-size: 20px"
+                              >
+                                Thành tiền
+                              </td>
+                              <td
+                                colspan="2"
+                                id="totalBill"
+                                style="
+                                  font-weight: bold;
+                                  color: red;
+                                  font-size: 20px;
+                                "
+                              ></td>
+                            </tr>
+                          </tfoot>
+                        </table>
+
+                        <div id="payment">
+                          <!-- <ul class="payment_methods methods">
+                                                        <li class="payment_method_bacs">
+                                                            <input type="radio" data-order_button_text="" checked="checked"
+                                                                value="bacs" name="payment_method" class="input-radio"
+                                                                id="payment_method_bacs">
+                                                            <label for="payment_method_bacs">Direct Bank Transfer </label>
+                                                            <div class="payment_box payment_method_bacs">
+                                                                <p>Make your payment directly into our bank account. Please use your
+                                                                    Order ID as the payment reference. Your order won’t be shipped
+                                                                    until the funds have cleared in our account.</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="payment_method_cheque">
+                                                            <input type="radio" data-order_button_text="" value="cheque"
+                                                                name="payment_method" class="input-radio"
+                                                                id="payment_method_cheque">
+                                                            <label for="payment_method_cheque">Cheque Payment </label>
+                                                            <div style="display:none;" class="payment_box payment_method_cheque">
+                                                                <p>Please send your cheque to Store Name, Store Street, Store Town,
+                                                                    Store State / County, Store Postcode.</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="payment_method_paypal">
+                                                            <input type="radio" data-order_button_text="Proceed to PayPal"
+                                                                value="paypal" name="payment_method" class="input-radio"
+                                                                id="payment_method_paypal">
+                                                            <label for="payment_method_paypal">PayPal <img
+                                                                    alt="PayPal Acceptance Mark"
+                                                                    src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png"><a
+                                                                    title="What is PayPal?"
+                                                                    onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"
+                                                                    class="about_paypal"
+                                                                    href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">What
+                                                                    is PayPal?</a>
+                                                            </label>
+                                                            <div style="display:none;" class="payment_box payment_method_paypal">
+                                                                <p>Pay via PayPal; you can pay with your credit card if you don’t
+                                                                    have a PayPal account.</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul> -->
+
+                          <div
+                            class="form-row place-order"
+                            style="padding-left: 39%"
+                          >
+                            <input
+                              type="submit"
+                              data-value="Place order"
+                              value="Đặt hàng"
+                              id="place_order"
+                              name="woocommerce_checkout_place_order"
+                              class="button alt"
+                            />
+                          </div>
+
+                          <div class="clear"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-widget-area">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img src="/img/icon/verification-1.png" style="width: 50px" />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Sản phẩm</span>
+                <strong>CHÍNH HÃNG</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img src="/img/icon/restore.png" style="width: 50px" />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Thủ tục đổi trả</span>
+                <strong>DỄ DÀNG</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img
+                src="/img/icon/molumen-phone-icon-1170x1170.png"
+                style="width: 50px"
+              />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Hotline hỗ trợ</span>
+                <strong>19001900</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img src="/img/icon/freeShip.png" style="width: 50px" />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Miễn phí vận chuyển</span>
+                <strong>TOÀN QUỐC</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End product widget area -->
+    <!-- <button type="button" onclick="add()"></button> -->
+    <div class="footer-top-area" id="footer">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-sm-5">
+            <div class="footer-about-us">
+              <h2><span>AT Store</span></h2>
+              <p style="padding-top: 11px">
+                AT Store là một trong những cửa hàng bán điện thoại cung cấp một
+                loạt các sản phẩm điện thoại từ các thương hiệu nổi tiếng như
+                Apple, Samsung, Oppo, Xiaomi và nhiều hãng khác. Khách hàng có
+                thể tìm thấy các mẫu điện thoại mới nhất và chất lượng nhất với
+                giá cả hợp lý tại cửa hàng của chúng tôi. Ngoài ra, chúng tôi
+                cũng cung cấp dịch vụ bảo hành và sửa chữa chuyên nghiệp để đảm
+                bảo rằng khách hàng của chúng tôi có thể sử dụng điện thoại của
+                mình một cách dễ dàng và thoải mái nhất. Chúng tôi luôn cam kết
+                mang lại sự hài lòng cao nhất cho khách hàng và hy vọng được
+                phục vụ bạn tại cửa hàng của chúng tôi.
+              </p>
+              <div class="footer-social">
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+
+                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3">
+            <div class="footer-menu">
+              <h2 class="footer-wid-title clw">Hỗ trợ 24/7</h2>
+              <ul>
+                <li>
+                  <a href="#"
+                    >Tư vấn mua hàng (Miễn phí) <br />
+                    1800 6601(Nhánh 1)
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    >Hỗ trợ kỹ thuật<br />
+                    1800 6601(Nhánh 2)
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    >Góp ý, khiếu nại (8h00 - 22h00)<br />
+                    1800 6616
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-4">
+            <div class="footer-widget contacts-widget">
+              <h2 class="footer-wid-title">Thông tin liên hệ</h2>
+              <div
+                class="footer-widget contacts-widget"
+                style="padding-top: 11px"
+              >
+                <ul
+                  style="list-style: none; padding-left: 0px"
+                  class="contact-info"
+                >
+                  <li>
+                    <h5>Công ty TNHH Thương Mại và Dịch Vụ Kỹ Thuật AT</h5>
+                  </li>
+                  <li style="display: flex">
+                    <i class="fa fa-envelope"></i
+                    ><a class="clg" href="mailto:needhelp@potisen.com"
+                      >&nbsp;&nbsp;admin@at-tech.com.vn</a
+                    >
+                  </li>
+                  <li>
+                    <i class="fa fa-phone-square"></i>
+                    <a href="tel:+926668880000" class="clg">
+                      &nbsp;0393 245 192</a
+                    ><br />
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-house"></i>
+                    <a
+                      target="_blank"
+                      class="clg"
+                      href="https://www.google.com/maps/place/C%C3%B4ng+ty+c%E1%BB%95+ph%E1%BA%A7n+th%C3%B4ng+tin+Hapro+(HaproInfo)/@21.0280165,105.8305581,17z/data=!4m15!1m8!3m7!1s0x3135ab9eed0fcdc1:0x444a9889dff6c7ff!2zMTFiIFAuIEPDoXQgTGluaCwgUXXhu5FjIFThu60gR2nDoW0sIMSQ4buRbmcgxJBhLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3b1!8m2!3d21.0280115!4d105.8327468!16s%2Fg%2F11gd398khg!3m5!1s0x3135ab9ec100e099:0x2d86d73c581fe41d!8m2!3d21.0276926!4d105.8326061!16s%2Fg%2F12qfb_xg5?hl=vi-VN"
+                      >Tầng 14, tòa nhà Hapro,11B Cát Linh, Phường Quốc Tử Giám,
+                      Quận Đống Đa, Thành phố Hà Nội.</a
+                    ><br />
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <img
+              src="/img/icon/Bo-Cong-Thuong-3.png"
+              style="padding-top: 30px; width: 150px"
+            />
+          </div>
+        </div>
+        <div class="row" style="margin-top: 30px; border-top: 3px solid gray">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <p style="margin-left: 30%; margin-top: 30px">
+              &copy; 2023, VietNam, AT Store.
+            </p>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Latest jQuery form server -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- jQuery sticky menu -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+
+    <!-- jQuery easing -->
+    <script src="js/jquery.easing.1.3.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        showInfo();
+      });
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      function executePrice(fromDate, toDate, saleStatus, discount, price) {
+        //format from date
+        var date2 = new Date(fromDate);
+        var day2 = date2.getDate();
+        var month2 = date2.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+        var year2 = date2.getFullYear();
+        var dateString2 =
+          year2.toString().padStart(2, "0") +
+          "-" +
+          month2.toString().padStart(2, "0") +
+          "-" +
+          day2;
+        //format from date
+        var date3 = new Date(toDate);
+        var day3 = date3.getDate();
+        var month3 = date3.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+        var year3 = date3.getFullYear();
+        var dateString3 =
+          year3.toString().padStart(2, "0") +
+          "-" +
+          month3.toString().padStart(2, "0") +
+          "-" +
+          day3;
+        //format date now
+        var now = new Date();
+        var currentDate = now.toISOString();
+        var date1 = new Date(currentDate);
+        var day1 = date1.getDate();
+        var month1 = date1.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+        var year1 = date1.getFullYear();
+        var dateString1 =
+          year1.toString().padStart(2, "0") +
+          "-" +
+          month1.toString().padStart(2, "0") +
+          "-" +
+          day1;
+        //compare date
+        var nowDate = new Date(dateString1);
+        var from = new Date(dateString2);
+        var to = new Date(dateString3);
+
+        if (nowDate >= from && nowDate <= to && saleStatus) {
+          return price - (price * discount) / 100;
+        } else {
+          return price;
+        }
+      }
+      function showCart() {
+        var cartBody = document.getElementById("cartBody");
+        cartBody.innerHTML = "";
+        let storage = localStorage.getItem("cart");
+        if (storage) {
+          cart = JSON.parse(storage);
+        }
+        cart.map((item) => {
+          cartBody.innerHTML +=
+            `
+            <tr class="cart_item">
+                <td class="product-remove">
+                    <input type="text" hidden name="productIdItem" id="productIdItem" value="${item.data.id}">
+                    <input type="text" hidden name="colorIdItem" id="colorIdItem" value="${item.data.colorId} ">
+                    <input type="text" hidden name="amountItem" id="amountItem" value="${item.data.amount} ">
+                </td>
+            
+                <td class="product-name">
+                    <a href="single-product.html?id=` +
+            item.data.id +
+            `&color=` +
+            item.data.colorId +
+            `&category=` +
+            item.data.category.id +
+            `">${item.data.productName}</a>
+                </td>
+                <td class="product-name">
+                    <span>${item.data.colorName}</span>
+                </td>
+            
+                <td class="product-price">
+                    <span class="amount" id="price">${numberWithCommas(
+                      executePrice(
+                        item.data.fromDate,
+                        item.data.toDate,
+                        item.data.saleStatus,
+                        item.data.discount,
+                        parseInt(item.data.price)
+                      )
+                    )}</span> VNĐ
+                </td>
+            
+                <td class="product-quantity">
+                    <div class="quantity buttons_added">
+                        
+                        <input type="number" readonly size="4" class="input-text qty text"
+                            style="text-align: center; " title="Qty" value="${
+                              item.quantity
+                            }" min="1"
+                            step="1" id="numberInputProduct">
+            
+                    </div>
+                </td>
+            
+                <td class="product-subtotal">
+                    <span class="amount" id="subtotal" >${numberWithCommas(
+                      executePrice(
+                        item.data.fromDate,
+                        item.data.toDate,
+                        item.data.saleStatus,
+                        item.data.discount,
+                        item.data.price
+                      ) * item.quantity
+                    )}</span> VNĐ
+                </td>
+        </tr>`;
+        });
+      }
+
+      function insert() {
+        // Lấy tất cả subtotal
+        var subtotal = document.querySelectorAll("#subtotal");
+        var payment = 0;
+        subtotal.forEach(function (e) {
+          payment += parseInt(e.textContent.replace(/\,/g, ""));
+        });
+
+        document.getElementById("totalBill").innerHTML =
+          numberWithCommas(payment);
+      }
+
+      function showInfo() {
+        // let info = {};
+        // let storage = localStorage.getItem("user");
+        // if (storage) {
+        //   user = JSON.parse(storage);
+        // }
+        console.log(user.fullname);
+        document.getElementById("billing_fullname").value = user.fullname;
+        document.getElementById("billing_email").value = user.email;
+        document.getElementById("billing_phone").value = user.phone;
+        document.getElementById("billing_address_detail").value = user.address;
+      }
+
+      $("#checkout").submit(function (event) {
+        event.preventDefault();
+
+        if (localStorage.getItem("cart")) {
+          var now = new Date();
+          var year = now.getFullYear();
+          var month = now.getMonth() + 1; // Tháng bắt đầu từ 0
+          var day = now.getDate();
+          var hour = now.getHours();
+          var minute = now.getMinutes();
+          var second = now.getSeconds();
+
+          var monthString = month < 10 ? "-0" + month : month;
+          var dayString = day < 10 ? "-0" + day : day;
+
+          var datetimeNow = year + monthString + dayString;
+
+          var order = {
+            address: document.getElementById("billing_address_detail").value,
+            phone: document.getElementById("billing_phone").value,
+            email: document.getElementById("billing_email").value,
+            createdDate: datetimeNow,
+            status: 0,
+            userEntity: {
+              id: user.id,
+              roleEntity: {
+                id: user.roleEntity.id,
+              },
+            },
+          };
+          // var i = {
+          //   address: "băc ninh",
+          //   phone: "19001900",
+          //   email: "atstore@gmail.com",
+          //   createdDate: "2023-03-09T17:00:00.000+00:00",
+          //   status: true,
+          //   userEntity: {
+          //     id: 3,
+          //     roleEntity: {
+          //       id: 4,
+          //     },
+          //   },
+          // };
+          console.log(order);
+          //create order
+
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:9090/order/createOrder",
+            data: JSON.stringify(order),
+            dataType: "json",
+            contentType: "application/json",
+            encode: true,
+            success: function (data) {
+              myCallbackFunction(data);
+            },
+            error: function () {
+              alert("Đặt hàng thất bại!!!");
+            },
+          });
+          //get order id
+          function myCallbackFunction(data) {
+            let cart = [];
+            let storage = localStorage.getItem("cart");
+            if (storage) {
+              cart = JSON.parse(storage);
+            }
+
+            var orderDetails = [];
+            for (let i = 0; i < cart.length; i++) {
+              //get sp trong local storage
+              const item = cart[i];
+              //format to save into db
+              let orderDetail = {
+                productId: item.data.id,
+                orderId: data.id,
+                price: executePrice(
+                  item.data.fromDate,
+                  item.data.toDate,
+                  item.data.saleStatus,
+                  item.data.discount,
+                  item.data.price
+                ),
+                amount: item.quantity,
+                colorId: item.data.colorId,
+              };
+              //list product formatted json
+              orderDetails.push(orderDetail);
+            }
+            console.log("order id :" + data.id);
+            console.log(cart);
+            //save into db
+            var orderDetailSize = orderDetails.length;
+            orderDetails.map((item) => {
+              orderDetailSize--;
+              postOrderDetail(item);
+              console.log(orderDetailSize);
+            });
+            console.log("final");
+            if (orderDetailSize == 0) {
+              alert("Đặt hàng thành công!!!");
+              localStorage.removeItem("cart");
+              window.location.href = "/Template_FrontEnd/personal-order.html";
+            }
+          }
+          function postOrderDetail(data) {
+            $.ajax({
+              type: "POST",
+              url: "http://localhost:9090/orderDetail/createOrderDetail",
+              data: JSON.stringify(data),
+              dataType: "json",
+              contentType: "application/json",
+              encode: true,
+              success: function (data) {
+                console.log(data);
+              },
+            });
+          }
+        } else {
+          alert("Giỏ hàng rỗng");
+        }
+        // localStorage.removeItem('cart');
+      });
+    </script>
+    <!-- call api get address -->
+    <!-- <script>
+      var citis = document.getElementById("city");
+      var districts = document.getElementById("district");
+      var wards = document.getElementById("ward");
+      var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+        method: "GET",
+        responseType: "application/json",
+      };
+      var promise = axios(Parameter);
+      promise.then(function (result) {
+        renderCity(result.data);
+      });
+
+      function renderCity(data) {
+        for (const x of data) {
+          citis.options[citis.options.length] = new Option(x.Name, x.Id);
+        }
+        citis.onchange = function () {
+          district.length = 1;
+          ward.length = 1;
+          if (this.value != "") {
+            const result = data.filter((n) => n.Id === this.value);
+
+            for (const k of result[0].Districts) {
+              district.options[district.options.length] = new Option(
+                k.Name,
+                k.Id
+              );
+            }
+          }
+        };
+        district.onchange = function () {
+          ward.length = 1;
+          const dataCity = data.filter((n) => n.Id === citis.value);
+          if (this.value != "") {
+            const dataWards = dataCity[0].Districts.filter(
+              (n) => n.Id === this.value
+            )[0].Wards;
+
+            for (const w of dataWards) {
+              wards.options[wards.options.length] = new Option(w.Name, w.Id);
+            }
+          }
+        };
+      }
+    </script> -->
+  </body>
+</html>

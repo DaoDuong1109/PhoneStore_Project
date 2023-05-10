@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>AT Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/css/order.css" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="admin.html">Quản Lý Bán Hàng</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form> -->
+      <!-- Navbar-->
+      <ul class="navbar-nav m-auto me-lg-5">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+            id="userAccount"
+          >
+            <!-- <li><a class="dropdown-item" href="">Cài đặt</a></li>
+                        
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="">Đăng xuất</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" href="index.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                Thống kê
+              </a>
+              <div class="sb-sidenav-menu-heading">Interface</div>
+
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Danh Mục
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addCategory.html"
+                      >Thêm Danh Mục</a
+                    >
+                    <a class="nav-link btnCategory" href="./category.html"
+                      >Danh Sách Danh Mục</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts2"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Ảnh Sản Phẩm
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts2"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addGallery.html">Thêm Ảnh</a>
+                    <a class="nav-link btnGallery" href="./gallery.html"
+                      >Danh Sách Ảnh Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts5"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Màu Sắc
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts5"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addColor.html">Thêm Màu Sắc</a>
+                    <a class="nav-link btnColor" href="./color.html"
+                      >Danh Sách Màu Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts3"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Sản Phẩm
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts3"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addProduct.html"
+                      >Thêm Sản Phẩm</a
+                    >
+                    <a class="nav-link btnProduct" href="./product.html"
+                      >Danh Sách Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts9"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Giảm Giá
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts9"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addSale.html">Thêm Giảm Giá</a>
+                    <a class="nav-link btnSale" href="./sale.html"
+                      >Danh Sách Giảm Giá</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts4"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Tài Khoản
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts4"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnAccount" href="./account.html"
+                      >Danh Sách Tài Khoản</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts6"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Bình Luận
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts6"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnComment" href="./comment.html"
+                      >Danh Sách Bình Luân</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts7"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Slide
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts7"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addSlide.html">Thêm Slide</a>
+                    <a class="nav-link btnSlide" href="./slide.html"
+                      >Danh Sách Slide</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts8"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Đơn Hàng
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts8"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnOrder" href="./order.html"
+                      >Duyệt Đơn Hàng</a
+                    >
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sb-sidenav-footer">
+            <div class="small">
+              Logged in as:
+              <p id="loginName" style="font-size: 13px; font-weight: bold"></p>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="card">
+            <div class="card-header">
+              <h2>Danh Sách Đơn Hàng</h2>
+            </div>
+            <div id="filterOrder">
+              <label for="checkOrder">Lọc đơn hàng:</label>
+              <select name="checkOrder" id="checkOrder">
+                <option value="all" selected>Tất cả</option>
+                <option value="đã duyệt đơn">Đơn đã duyệt</option>
+                <option value="chờ duyệt đơn">Chờ xác nhận</option>
+                <option value="đơn đã bị hủy">Đơn đã bị hủy</option>
+              </select>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-bordered" id="myTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Mã Đơn</th>
+                    <th scope="col">Khách hàng</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Tổng tiền</th>
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Trạng thái đơn hàng</th>
+                    <th scope="col" style="width: 229px">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="content">
+                  <!-- <tr>
+                        <td>1</td>
+                        <td>Đào Xuân Dương</td>
+                        <td>0977032969</td>
+                        <td>120120120</td>
+                        <td>24-12-2022</td>
+                        <td>đang duyệt</td>
+                        <td>
+                            <button type="button" class="btn btn-success mr-2 confirm">Xác nhận</button>
+                        </td>
+                    </tr> -->
+                </tbody>
+              </table>
+              <div id="popup">
+                <div id="popup-content">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Mã đơn</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Tổng tiền</th>
+                      </tr>
+                    </thead>
+                    <tbody id="contentTable"></tbody>
+                  </table>
+                  <button id="close-popup">Đóng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/datatables-simple-demo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- infor user admin -->
+    <script>
+      let user = {};
+      let storage = localStorage.getItem("userAdmin");
+      if (storage) {
+        user = JSON.parse(storage);
+
+        $("#userAccount").html(
+          `
+                    <li><a class="dropdown-item" style="font-size:12px; font-weight:bold; cursor:pointer;" href="">` +
+            user.fullname +
+            `</a></li>
+                    
+                    <li><hr class="dropdown-divider" /></li>
+                    
+                    <li><a class="dropdown-item" onclick="logout()" style="cursor:pointer;">Đăng xuất</a></li>
+              `
+        );
+        $("#loginName").html(user.fullname);
+      } else {
+        $("#userAccount").html(`
+              <a href="/Template_FrontEnd/login.html">Đăng nhập</a>
+              `);
+      }
+      function logout() {
+        localStorage.removeItem("userAdmin");
+        window.location.href = "/Template_FrontEnd/login.html";
+      }
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        renderOrderConfirm();
+
+        filterOrder();
+      });
+      function filterOrder() {
+        // Lấy bảng và các hàng của bảng
+        const table = document.getElementById("myTable");
+        const rows = table.getElementsByTagName("tr");
+
+        // Lấy select option
+        const filter = document.getElementById("checkOrder");
+
+        // Thêm sự kiện change cho select option
+        filter.addEventListener("change", function (e) {
+          // Lấy giá trị được chọn
+          const selectedValue = filter.value;
+          console.log(selectedValue);
+          // Lặp qua từng hàng của bảng
+          for (let i = 1; i < rows.length; i++) {
+            // Lấy giá trị của cột Fruit
+            const item = rows[i].getElementsByTagName("td")[5].textContent;
+
+            // Kiểm tra nếu giá trị của cột Fruit bằng giá trị được chọn hoặc giá trị được chọn là "All"
+            if (item.toLowerCase() == selectedValue || selectedValue == "all") {
+              // Hiển thị hàng đó
+              rows[i].style.display = "";
+            } else {
+              // Ẩn hàng đó
+              rows[i].style.display = "none";
+            }
+          }
+        });
+      }
+      function formatDate(data) {
+        //format date
+        var date = new Date(data);
+        var day = date.getDate();
+        var month = date.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+        var year = date.getFullYear();
+        var dateString =
+          day +
+          "-" +
+          month.toString().padStart(2, "0") +
+          "-" +
+          year.toString().padStart(2, "0");
+
+        return dateString;
+      }
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      function convertStatus(data) {
+        if (data == 1) {
+          return "Đã duyệt đơn";
+        } else if (data == 0) {
+          return "Chờ duyệt đơn";
+        } else if (data == 2) {
+          return "Đơn đã bị hủy";
+        }
+      }
+      function changeButtonConfirm() {
+        var changeStatusOrder = document.querySelectorAll(".confirm");
+
+        changeStatusOrder.forEach(function (button) {
+          var list = button.closest("tr");
+          var statusWord = list.querySelector("#status").textContent;
+          var status = statusWord == "Chờ duyệt đơn" ? 0 : 1;
+
+          if (status == 1) {
+            // list.querySelector("#confirm").style.backgroundColor = "white";
+            // list.querySelector("#confirm").style.color = "grey";
+            list.querySelector("#confirm").hidden = true;
+            list.querySelector("#delete").hidden = true;
+          }
+        });
+      }
+
+      function changeStatusOrders() {
+        var changeStatusOrder = document.querySelectorAll(".confirm");
+
+        changeStatusOrder.forEach(function (button) {
+          button.addEventListener("click", function () {
+            // Lấy các phần tử liên quan đến nút được nhấp
+            var listItem = this.closest("tr");
+            var orderId = listItem.querySelector("#orderId").textContent;
+            var statusWord = listItem.querySelector("#status").textContent;
+            var status = statusWord == "Chờ duyệt đơn" ? 0 : 1;
+            if (status == 1) {
+              // listItem.querySelector("#confirm").style.backgroundColor =
+              //   "white";
+              // listItem.querySelector("#confirm").style.color = "grey";
+              listItem.querySelector("#confirm").hidden = true;
+              listItem.querySelector("#delete").hidden = true;
+            }
+            var order = {
+              status: 1,
+            };
+            var check = false;
+            var urlOrder =
+              "http://localhost:9090/orderDetail/findAllByOrderId/" + orderId;
+
+            var urlProColor = "http://localhost:9090/productcolor/findAll";
+
+            $.when(
+              $.ajax({
+                url: urlOrder,
+                dataType: "json",
+              }),
+              $.ajax({
+                url: urlProColor,
+                dataType: "json",
+              })
+            )
+              .done(function (data1, data2) {
+                changeQuantityProduct(data1, data2);
+              })
+              .fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("Error:", textStatus, errorThrown);
+              });
+
+            function changeQuantityProduct(data1, data2) {
+              var listOrderCustomer = data1[0];
+              var listProductColor = data2[0];
+              // console.log("--------------------------");
+              // console.log(listOrderCustomer);
+
+              var count = 0;
+              for (const item of listOrderCustomer) {
+                //tim  san pham được đặt hàng
+                const mainProduct = listProductColor.find(
+                  (product) =>
+                    product.productId === item.productId &&
+                    product.colorId === item.colorId
+                );
+                //check số lượng có trong kho và số lượng đặt
+                //status: trạng thái đơn hàng
+                if (
+                  mainProduct &&
+                  mainProduct.amount >= item.amount &&
+                  status == 0
+                ) {
+                  mainProduct.amount -= item.amount;
+                  count++;
+                }
+
+                // console.log("count: " + count);
+              }
+
+              if (count == listOrderCustomer.length) {
+                if (status == 0) {
+                  //update status
+                  $.ajax({
+                    type: "PUT",
+                    url:
+                      "http://localhost:9090/order/updateStatusById/" + orderId,
+                    data: JSON.stringify(order),
+                    contentType: "application/json",
+                    encode: true,
+                    success: function (result) {
+                      alert("Duyệt đơn thành công ");
+                      console.log(result);
+                      location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                      console.error(error);
+                    },
+                  });
+
+                  //update product color
+                  $.ajax({
+                    type: "PUT",
+                    url: "http://localhost:9090/productcolor/updateAll",
+                    data: JSON.stringify(listProductColor),
+                    contentType: "application/json",
+                    encode: true,
+                    success: function (result) {
+                      console.log("SUCCESS");
+                      console.log(result);
+                    },
+                    error: function (xhr, status, error) {
+                      console.error(error);
+                    },
+                  });
+                }
+              } else if (count == 0) {
+                console.log(count);
+              } else if (count < listOrderCustomer.length) {
+                alert("Không đủ sản phẩm trong kho!!!");
+              }
+              console.log(listProductColor);
+            }
+          });
+        });
+        //hủy đơn
+        var cancelOrder = document.querySelectorAll(".delete");
+        cancelOrder.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            // Lấy các phần tử liên quan đến nút được nhấp
+            var listItem = this.closest("tr");
+            var orderId = listItem.querySelector("#orderId").textContent;
+            var statusWord = listItem.querySelector("#status").textContent;
+            var status = statusWord == "Chờ duyệt đơn" ? 0 : 2;
+            var order = {
+              status: 2,
+            };
+            var urlOrder =
+              "http://localhost:9090/orderDetail/findAllByOrderId/" + orderId;
+              if (status == 0) {
+                  //update status
+                  $.ajax({
+                    type: "PUT",
+                    url:
+                      "http://localhost:9090/order/updateStatusById/" + orderId,
+                    data: JSON.stringify(order),
+                    contentType: "application/json",
+                    encode: true,
+                    success: function (result) {
+                      alert("Hủy đơn thành công ");
+                      console.log(result);
+                      location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                      console.error(error);
+                    },
+                  });
+                }
+
+          });
+        });
+        //end hủy đơn
+      }
+
+      function renderOrderConfirm() {
+        //render order
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:9090/orderDetail/findAllOrderConfirm",
+          dataType: "json",
+          success: function (result, status, xhr) {
+            console.log(result);
+            let html = "";
+
+            result.forEach((data) => {
+              html +=
+                `<tr>
+                        <td id="orderId">` +
+                data.orderId +
+                `</td>
+                        <td>` +
+                data.fullname +
+                `</td>
+                        <td>` +
+                data.phone +
+                `</td>
+                        <td>` +
+                numberWithCommas(data.totalPayment) +
+                `</td>
+                        <td>` +
+                formatDate(data.createdDate) +
+                `</td>
+                        <td id="status">` +
+                convertStatus(data.status) +
+                `</td>
+                        <td>
+                            <button type="button" class="btn btn-success mr-2 confirm" id="confirm">Xác nhận</button>
+                            <button type="button" class="btn btn-info" id="open-popup">Chi tiết</button>
+                            <button type="button" class="btn btn-danger delete" id="delete">Hủy</button>
+                        </td>
+                    </tr>`;
+            });
+            $("#content").html(html);
+            changeStatusOrders();
+            displayPopup();
+            changeButtonConfirm();
+          },
+          error: function (xhr, status, error) {},
+        });
+      }
+
+      function displayPopup() {
+        //duyệt all các nút xem chi tiết
+        var selectButtonPopup = document.querySelectorAll("#open-popup");
+        // Lặp qua từng nút xem chi tiết và thêm sự kiện nhấp chuột vào mỗi nút
+        selectButtonPopup.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const popup = document.getElementById("popup");
+            popup.style.display = "block";
+            // Lấy các phần tử liên quan đến nút được nhấp
+            var listItem = this.closest("tr");
+            var orderId = listItem.querySelector("#orderId").textContent;
+
+            var url = "http://localhost:9090/order/getDetailOrderId/" + orderId;
+            $.get(url, function (data) {
+              console.log(data);
+              var html = ``;
+              data.forEach((e) => {
+                html +=
+                  `
+              <tr>
+                  <td>` +
+                  e.orderId +
+                  `</td>
+                  <td>` +
+                  e.productName +
+                  ` ` +
+                  e.colorName +
+                  `</td>
+                  <td>` +
+                  e.amount +
+                  `</td>
+                  <td>` +
+                  numberWithCommas(e.price) +
+                  `</td>
+                  <td>` +
+                  numberWithCommas(e.price * e.amount) +
+                  `</td>
+            </tr>
+              `;
+              });
+
+              $("#contentTable").html(html);
+            });
+          });
+        });
+      }
+    </script>
+    <script>
+      const closePopupButton = document.getElementById("close-popup");
+      closePopupButton.addEventListener("click", function () {
+        popup.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

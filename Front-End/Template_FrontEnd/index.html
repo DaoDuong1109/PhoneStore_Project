@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trang chủ AT Store</title>
+    <link rel="icon" href="./img/logo/logo_product.jpg" type="image/x-icon" />
+    <!-- Google Fonts -->
+    <link
+      href="http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Raleway:400,100"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/Template_FrontEnd/js/shoppingCart.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+
+  <body>
+    <div class="mainmenu-area">
+      <div class="navbar">
+        <div class="logo col-md-2">
+          <a href="./index.html" style="margin: 0 auto"
+            ><img class="img-logo" src="/img/logo/logo_product.jpg"
+          /></a>
+        </div>
+        <div class="list-itemP col-md-8">
+          <div class="navbar-collapse collapse item-P">
+            <ul class="nav navbar-nav">
+              <li><a class="active-P clb" href="index.html">Trang chủ</a></li>
+              <li>
+                <a class="clb sanpham" href="aboutUs.html">Về chúng tôi</a>
+              </li>
+              <li><a class="clb sanpham" href="shop.html">Sản phẩm</a></li>
+              <li><a class="clb sanpham" href="#footer">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2 list-itemP">
+          <div class="shopping-item">
+            <a href="cart.html"
+              >Giỏ hàng
+
+              <i class="fa fa-shopping-cart"></i>
+              <span class="product-count" id="product-count"></span
+            ></a>
+          </div>
+        </div>
+        <div class="col-md-2 icon-user">
+          <div class="dropdown">
+            <button class="nut_dropdown">
+              <i class="fa-solid fa-user"></i>
+            </button>
+            <div class="noidung_dropdown" id="noidung_dropdown"></div>
+            <script>
+              let user = {};
+              let storage = localStorage.getItem("user");
+              if (storage) {
+                user = JSON.parse(storage);
+                $("#noidung_dropdown").html(
+                  `
+                <a href="/Template_FrontEnd/personal-order.html" style="font-size:12px; font-weight:bold; cursor:pointer;">` +
+                    user.email +
+                    `</a>
+                <a href="" onclick="logout()">Đăng xuất</a>
+                `
+                );
+              } else {
+                $("#noidung_dropdown").html(`
+                <a href="/Template_FrontEnd/login.html">Đăng nhập</a>
+                `);
+              }
+
+              function logout() {
+                localStorage.removeItem("user");
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End mainmenu area -->
+
+    <div class="slider-area" style="margin-top: 20px">
+      <!-- Slider -->
+      <!-- <div class="block-slider block-slider4">
+        <ul id="bxslider-home4" class="slidersduong">
+          <li>
+            <img src="/img/banners/banner1.png" alt="Slide" />
+          </li> -->
+      <!-- <li>
+            <img src="/img/banners/banner1.png" alt="Slide" />
+          </li>
+          <li>
+            <img src="/img/banners/banner1.png" alt="Slide" />
+          </li> -->
+      <!-- </ul>
+      </div> -->
+      <div class="w3-content w3-display-container sliders">
+        <!-- <img class="mySlides" src="/img/banners/banner2.png" style="width: 100%" style="display: none;"/> -->
+
+        <button
+          class="w3-button w3-black w3-display-left"
+          onclick="plusDivs(-1)"
+        >
+          &#10094;
+        </button>
+        <button
+          class="w3-button w3-black w3-display-right"
+          onclick="plusDivs(1)"
+        >
+          &#10095;
+        </button>
+      </div>
+    </div>
+    <!-- ./Slider -->
+    <!-- End slider area -->
+
+    <div class="promo-area">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <div class="single-promo promo1">
+              <!-- <i class="fa fa-refresh"></i>
+                        <p>30 Days return</p> -->
+              <img
+                src="/img/gif/vi-vn-iphone-11-pro-max-256gb-dophangiai.gif"
+              />
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="single-promo promo2">
+              <!-- <i class="fa fa-truck"></i>
+                        <p>Free shipping</p> -->
+              <img src="/img/gif/-samsung-galaxy-z-fold-2-manhinhgap.gif" />
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="single-promo promo3">
+              <!-- <i class="fa fa-lock"></i>
+                        <p>Secure payments</p> -->
+              <img
+                src="/img/gif/oppo-5x-optical-zoom-periscope-camera-setup_600x338.gif"
+              />
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="single-promo promo4">
+              <img src="/img/gif/-9-always-on.gif" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End promo area -->
+
+    <div class="maincontent-area">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 style="font-weight: bold" id="trending">Sản phẩm nổi bật</h2>
+            <div
+              id="myCarousel-1"
+              class="carousel slide"
+              data-ride="carousel"
+              data-interval="0"
+            >
+              <div class="carousel-inner productHot"></div>
+
+              <script>
+                // format price
+                function numberWithCommas(x) {
+                  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                }
+                $(document).ready(function () {
+                  //  localStorage.removeItem('cart');
+                  $.ajax({
+                    type: "GET",
+                    url: "http://localhost:9090/product/findTreding",
+                    dataType: "json",
+                    success: function (result, status, xhr) {
+                      var row = parseInt(result.length / 4);
+                      var du = parseInt(result.length % 4);
+                      if (du > 0) {
+                        row += 1;
+                      }
+                      // console.log("row: " + row + "/ du: " + du);
+                      var numberRow = parseInt(row);
+                      var productHot = $(".productHot");
+
+                      var index = 0;
+                      var i;
+                      for (i = 0; i < numberRow; i++) {
+                        var item = $('<div class="item carousel-item"></div>');
+                        var row = $('<div class="row"></div>');
+
+                        for (var j = 0; j < 4; j++) {
+                          row.append(
+                            `<div class="col-sm-3">
+                              <div class="thumb-wrapper">
+                                
+                                <div class="img-box">
+                                  <a href="single-product.html?id=` +
+                              result[index].id +
+                              `&color=` +
+                              result[index].colorId +
+                              `&category=` +
+                              result[index].category.id +
+                              `">
+                                    <img
+                                      src="/img/products/` +
+                              result[index].productImage +
+                              `"
+                                      class="img-fluid"
+                                      alt=""
+                                    />
+                                  </a>
+                                </div>
+                                <div class="thumb-content">
+                                  <h4>` +
+                              result[index].productName +
+                              " " +
+                              result[index].colorName +
+                              `</h4>
+                                  <p class="item-price">
+                                    
+                                    <b>` +
+                              executePrice(
+                                result[index].fromDate,
+                                result[index].toDate,
+                                result[index].saleStatus,
+                                result[index].discount,
+                                result[index].price
+                              ) +
+                              `</b>
+
+                                  </p>
+                                  <a class="btn btn-primary" onclick="addToCart(` +
+                              result[index].id +
+                              `,` +
+                              result[index].colorId +
+                              `,` +
+                              1 +
+                              `)">Thêm vào giỏ</a>
+                                </div>
+                              </div>
+                            </div>`
+                          );
+
+                          item.append(row);
+
+                          index++;
+                          if (index >= result.length) {
+                            break;
+                          }
+                        }
+
+                        productHot.append(item);
+                      }
+                      productHot.children().first().addClass("active");
+                    },
+                    error: function (xhr, status, error) {
+                      alert("Lỗi render product trending");
+                    },
+                  });
+
+                  function executePrice(
+                    fromDate,
+                    toDate,
+                    saleStatus,
+                    discount,
+                    price
+                  ) {
+                    //format from date
+                    var date2 = new Date(fromDate);
+                    var day2 = date2.getDate();
+                    var month2 = date2.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+                    var year2 = date2.getFullYear();
+                    var dateString2 =
+                      year2.toString().padStart(2, "0") +
+                      "-" +
+                      month2.toString().padStart(2, "0") +
+                      "-" +
+                      day2;
+                    //format from date
+                    var date3 = new Date(toDate);
+                    var day3 = date3.getDate();
+                    var month3 = date3.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+                    var year3 = date3.getFullYear();
+                    var dateString3 =
+                      year3.toString().padStart(2, "0") +
+                      "-" +
+                      month3.toString().padStart(2, "0") +
+                      "-" +
+                      day3;
+                    //format date now
+                    var now = new Date();
+                    var currentDate = now.toISOString();
+                    var date1 = new Date(currentDate);
+                    var day1 = date1.getDate();
+                    var month1 = date1.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+                    var year1 = date1.getFullYear();
+                    var dateString1 =
+                      year1.toString().padStart(2, "0") +
+                      "-" +
+                      month1.toString().padStart(2, "0") +
+                      "-" +
+                      day1;
+                    //compare date
+                    var nowDate = new Date(dateString1);
+                    var from = new Date(dateString2);
+                    var to = new Date(dateString3);
+
+                    if (nowDate >= from && nowDate <= to && saleStatus) {
+                      return (
+                        numberWithCommas(price - (price * discount) / 100) +
+                        `<u>đ</u>  <del style="color:grey;">` +
+                        numberWithCommas(price) +
+                        `<u>đ</u></del>`
+                      );
+                    } else {
+                      return numberWithCommas(price) + `<u>đ</u>`;
+                    }
+                  }
+                });
+              </script>
+              <!-- Carousel controls -->
+              <a
+                class="carousel-control-prev"
+                href="#myCarousel-1"
+                data-slide="prev"
+              >
+                <i
+                  class="fa fa-angle-left"
+                  style="
+                    background: #fa8072;
+                    width: 2%;
+                    padding-left: 5px;
+                    border-radius: 5px;
+                  "
+                ></i>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#myCarousel-1"
+                data-slide="next"
+              >
+                <i
+                  class="fa fa-angle-right"
+                  style="
+                    background: #fa8072;
+                    width: 2%;
+                    padding-left: 5px;
+                    margin-left: 100%;
+                    border-radius: 5px;
+                  "
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End main content area -->
+
+    <div class="brands-area">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="brand-wrapper">
+              <div class="brand-list" id="brands-sliders">
+                <img src="/img/brands/Apple.jpg" alt="" />
+
+                <img src="/img/brands/Nokia.jpg" alt="" />
+                <img src="/img/brands/Oppo.jpg" alt="" />
+
+                <img src="/img/brands/Realme.jpg" alt="" />
+                <img src="/img/brands/Samsung.jpg" alt="" />
+                <img src="/img/brands/Xiaomi.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End brands area -->
+
+    <div class="product-widget-area">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img src="/img/icon/verification-1.png" style="width: 50px" />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Sản phẩm</span>
+                <strong>CHÍNH HÃNG</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img src="/img/icon/restore.png" style="width: 50px" />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Thủ tục đổi trả</span>
+                <strong>DỄ DÀNG</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img
+                src="/img/icon/molumen-phone-icon-1170x1170.png"
+                style="width: 50px"
+              />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Hotline hỗ trợ</span>
+                <strong>19001900</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="item" style="display: flex">
+              <img src="/img/icon/freeShip.png" style="width: 50px" />
+              <div
+                class="text"
+                style="
+                  padding: 10px 0px 0px 20px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <span>Miễn phí vận chuyển</span>
+                <strong>TOÀN QUỐC</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End product widget area -->
+    <!-- <button type="button" onclick="add()"></button> -->
+    <div class="footer-top-area" id="footer">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-sm-5">
+            <div class="footer-about-us">
+              <h2><span>AT Store</span></h2>
+              <p style="padding-top: 11px">
+                AT Store là một trong những cửa hàng bán điện thoại cung cấp một
+                loạt các sản phẩm điện thoại từ các thương hiệu nổi tiếng như
+                Apple, Samsung, Oppo, Xiaomi và nhiều hãng khác. Khách hàng có
+                thể tìm thấy các mẫu điện thoại mới nhất và chất lượng nhất với
+                giá cả hợp lý tại cửa hàng của chúng tôi. Ngoài ra, chúng tôi
+                cũng cung cấp dịch vụ bảo hành và sửa chữa chuyên nghiệp để đảm
+                bảo rằng khách hàng của chúng tôi có thể sử dụng điện thoại của
+                mình một cách dễ dàng và thoải mái nhất. Chúng tôi luôn cam kết
+                mang lại sự hài lòng cao nhất cho khách hàng và hy vọng được
+                phục vụ bạn tại cửa hàng của chúng tôi.
+              </p>
+              <div class="footer-social">
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+
+                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3">
+            <div class="footer-menu">
+              <h2 class="footer-wid-title clw">Hỗ trợ 24/7</h2>
+              <ul>
+                <li>
+                  <a href="#"
+                    >Tư vấn mua hàng (Miễn phí) <br />
+                    1800 6601(Nhánh 1)
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    >Hỗ trợ kỹ thuật<br />
+                    1800 6601(Nhánh 2)
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    >Góp ý, khiếu nại (8h00 - 22h00)<br />
+                    1800 6616
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-4">
+            <div class="footer-widget contacts-widget">
+              <h2 class="footer-wid-title">Thông tin liên hệ</h2>
+              <div
+                class="footer-widget contacts-widget"
+                style="padding-top: 11px"
+              >
+                <ul
+                  style="list-style: none; padding-left: 0px"
+                  class="contact-info"
+                >
+                  <li>
+                    <h5>Công ty TNHH Thương Mại và Dịch Vụ Kỹ Thuật AT</h5>
+                  </li>
+                  <li style="display: flex">
+                    <i class="fa fa-envelope"></i
+                    ><a class="clg" href="mailto:needhelp@potisen.com"
+                      >&nbsp;&nbsp;admin@at-tech.com.vn</a
+                    >
+                  </li>
+                  <li>
+                    <i class="fa fa-phone-square"></i>
+                    <a href="tel:+926668880000" class="clg">
+                      &nbsp;0393 245 192</a
+                    ><br />
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-house"></i>
+                    <a
+                      target="_blank"
+                      class="clg"
+                      href="https://www.google.com/maps/place/C%C3%B4ng+ty+c%E1%BB%95+ph%E1%BA%A7n+th%C3%B4ng+tin+Hapro+(HaproInfo)/@21.0280165,105.8305581,17z/data=!4m15!1m8!3m7!1s0x3135ab9eed0fcdc1:0x444a9889dff6c7ff!2zMTFiIFAuIEPDoXQgTGluaCwgUXXhu5FjIFThu60gR2nDoW0sIMSQ4buRbmcgxJBhLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3b1!8m2!3d21.0280115!4d105.8327468!16s%2Fg%2F11gd398khg!3m5!1s0x3135ab9ec100e099:0x2d86d73c581fe41d!8m2!3d21.0276926!4d105.8326061!16s%2Fg%2F12qfb_xg5?hl=vi-VN"
+                      >Tầng 14, tòa nhà Hapro,11B Cát Linh, Phường Quốc Tử Giám,
+                      Quận Đống Đa, Thành phố Hà Nội.</a
+                    ><br />
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <img
+              src="/img/icon/Bo-Cong-Thuong-3.png"
+              style="padding-top: 30px; width: 150px"
+            />
+          </div>
+        </div>
+        <div class="row" style="margin-top: 30px; border-top: 3px solid gray">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <p style="margin-left: 30%; margin-top: 30px">
+              &copy; 2023, VietNam, AT Store.
+            </p>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </div>
+    <!-- End footer top area -->
+
+    <!-- End footer bottom area -->
+
+    <!-- Latest jQuery form server -->
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- jQuery sticky menu -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+
+    <!-- jQuery easing -->
+    <script src="js/jquery.easing.1.3.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+
+    <!-- Slider -->
+    <script type="text/javascript" src="js/bxslider.min.js"></script>
+    <script type="text/javascript" src="js/script.slider.js"></script>
+
+    <script>
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs((slideIndex += n));
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = x.length;
+        }
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+      }
+    </script>
+   
+    <script>
+      $(document).ready(function () {
+        loadTotalProduct();
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:9090/slide/slides",
+          dataType: "json",
+          success: function (result, status, xhr) {
+            // console.log(result);
+            var html = ``;
+            result.forEach((item) => {
+              if (item.status) {
+                $(".sliders").append(
+                  `<img class="mySlides" src="/img/banners/` +
+                    item.image +
+                    `" style="width: 100%" />`
+                );
+              }
+            });
+            showDivs(1);
+          },
+          error: function (xhr, status, error) {
+            alert("Lỗi render slide");
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detail Product</title>
+    <link rel="icon" href="./img//logo/logo_product.jpg" type="image/x-icon" />
+    <!-- Google Fonts -->
+    <link
+      href="http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Raleway:400,100"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/Template_FrontEnd/js/shoppingCart.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/chitietsp.css" />
+  </head>
+
+  <body>
+    <div class="mainmenu-area">
+      <div class="navbar">
+        <div class="logo col-md-2">
+          <a href="./index.html" style="margin: 0 auto"
+            ><img class="img-logo" src="/img/logo/logo_product.jpg"
+          /></a>
+        </div>
+        <div class="list-itemP col-md-8">
+          <div class="navbar-collapse collapse item-P">
+            <ul class="nav navbar-nav">
+              <li><a class="active-P clb" href="index.html">Trang chủ</a></li>
+              <li>
+                <a class="clb sanpham" href="aboutUs.html">Về chúng tôi</a>
+              </li>
+              <li><a class="clb sanpham" href="shop.html">Sản phẩm</a></li>
+              <li><a class="clb sanpham" href="#footer">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2 list-itemP">
+          <div class="shopping-item">
+            <a href="cart.html"
+              >Giỏ hàng
+              <i class="fa fa-shopping-cart"></i>
+              <span class="product-count" id="product-count"></span
+            ></a>
+          </div>
+        </div>
+        <div class="col-md-2 icon-user">
+          <div class="dropdown">
+            <button class="nut_dropdown">
+              <i class="fa-solid fa-user"></i>
+            </button>
+            <div class="noidung_dropdown" id="noidung_dropdown"></div>
+            <script>
+              let user = {};
+              let storage = localStorage.getItem("user");
+              if (storage) {
+                user = JSON.parse(storage);
+                $("#noidung_dropdown").html(
+                  `
+                 <a href="/Template_FrontEnd/personal-order.html" style="font-size:12px; font-weight:bold; cursor:pointer;">` +
+                    user.email +
+                    `</a>
+                <a href="" onclick="logout()">Đăng xuất</a>
+                `
+                );
+              } else {
+                $("#noidung_dropdown").html(`
+                <a href="/Template_FrontEnd/login.html">Đăng nhập</a>
+                `);
+              }
+
+              function logout() {
+                localStorage.removeItem("user");
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End header area -->
+    <div class="container">
+      <div class="text-center">
+        <h1 class="title-P">Chi tiết sản phẩm</h1>
+      </div>
+    </div>
+
+    <div class="single-product-area" style="padding: 30px">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="product-content-right">
+              <div class="product-breadcroumb">
+                <span>
+                  <a href="/Template_FrontEnd/index.html">Trang chủ</a
+                  ><a href=""> > Chi tiết sản phẩm </a>
+                </span>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="product-images">
+                    <div class="product-main-img">
+                      <img src="" alt="" id="mainImage" />
+                    </div>
+                    <div>
+                      <p><i>Ảnh tham khảo các màu</i></p>
+                    </div>
+                    <div class="product-gallery">
+                      <!-- <img
+                        src="/img/products/600_galaxy_note_10_plus_den_6.png"
+                        alt=""
+                        onclick="changeImage(this.src)"
+                      />
+                      <img
+                        src="/img/products/600_Galaxy_Z_Fold_3.png"
+                        alt=""
+                        onclick="changeImage(this.src)"
+                      />
+                      <img
+                        src="/img/products/600_iphone_11_trang_xtsmart.jpg"
+                        alt=""
+                        onclick="changeImage(this.src)"
+                      /> -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="product-inner">
+                    <h2 class="product-name"></h2>
+                    <div class="product-inner-price">
+                      <ins id="price"></ins><ins></ins>
+                    </div>
+                    <div class="amount-product">
+                      <span style="display: flex"
+                        ><p><b>Số lượng:</b></p>
+                        <p style="margin-left: 5px" id="amount"></p
+                      ></span>
+                    </div>
+                    <form action="" class="cart">
+                      <div class="quantity">
+                        <input
+                          type="number"
+                          size="4"
+                          class="input-text qty text"
+                          title="Qty"
+                          value="1"
+                          id="quantity"
+                          name="quantity"
+                          min="1"
+                          step="1"
+                          onchange="checkAmount(this.value)"
+                        />
+                      </div>
+
+                      <button
+                        class="add_to_cart_button"
+                        id="add_to_cart_button"
+                        type="button"
+                        onclick=""
+                      >
+                        Thêm vào giỏ
+                      </button>
+                    </form>
+
+                    <!-- <div class="product-inner-category">
+                      <p>
+                        Category: <a href="">Summer</a>. Tags:
+                        <a href="">awesome</a>, <a href="">best</a>,
+                        <a href="">sale</a>, <a href="">shoes</a>.
+                      </p>
+                    </div> -->
+
+                    <div role="tabpanel">
+                      <ul class="product-tab" role="tablist">
+                        <li role="presentation" class="active">
+                          <a
+                            href="#home"
+                            aria-controls="home"
+                            role="tab"
+                            data-toggle="tab"
+                            >Chi tiết</a
+                          >
+                        </li>
+                        <!-- <li role="presentation">
+                          <a
+                            href="#profile"
+                            aria-controls="profile"
+                            role="tab"
+                            data-toggle="tab"
+                            >Đánh giá</a
+                          >
+                        </li> -->
+                      </ul>
+                      <div class="tab-content">
+                        <div
+                          role="tabpanel"
+                          class="tab-pane fade in active"
+                          id="home"
+                        >
+                          <div class="info_product">
+                            <h2>Thông số kỹ thuật</h2>
+                            <ul class="info"></ul>
+                          </div>
+                        </div>
+                        <!-- <div role="tabpanel" class="tab-pane fade" id="profile">
+                          <h2>Đánh giá</h2>
+                          <div class="submit-review">
+                            <p>
+                              <label for="name">Tên khách hàng</label>
+                              <input name="name" type="text" required />
+                            </p>
+                            <p>
+                              <label for="email">Email</label>
+                              <input name="email" type="email" required />
+                            </p>
+
+                            <p>
+                              <label for="review">Bình luận</label>
+                              <textarea
+                                name="review"
+                                id=""
+                                cols="30"
+                                rows="10"
+                              ></textarea>
+                            </p>
+                            <p><input type="submit" value="Gửi" /></p>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script>
+                // format price
+                function numberWithCommas(x) {
+                  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                }
+                //end
+                var urlParams = new URLSearchParams(window.location.search);
+                var id = urlParams.get("id");
+                var colorId = urlParams.get("color");
+
+                //render detail
+                $.ajax({
+                  type: "GET",
+                  url:
+                    "http://localhost:9090/product/findDetailProduct?id=" +
+                    id +
+                    "&color=" +
+                    colorId,
+                  dataType: "json",
+                  success: function (result, status, xhr) {
+                    document
+                      .getElementById("add_to_cart_button")
+                      .setAttribute(
+                        "onclick",
+                        "addToCart(" +
+                          result.id +
+                          "," +
+                          result.colorId +
+                          "," +
+                          1 +
+                          ")"
+                      );
+                    //product name
+                    $(".product-name").html(
+                      result.productName + ` ` + result.colorName
+                    );
+                    // price
+                    $("#price").html(
+                      executePrice(
+                        result.fromDate,
+                        result.toDate,
+                        result.saleStatus,
+                        result.discount,
+                        result.price
+                      )
+                    );
+
+                    $("#title-review").append(result.productName);
+                    // amount
+                    $("#amount").html(result.amount);
+                    // image
+                    document.getElementById("mainImage").src =
+                      "/img/products/" + result.image;
+
+                    let html =
+                      `
+                    <li>
+                                <p>Màn hình</p>
+                                <div>` +
+                      result.screen +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>Hệ điều hành</p>
+                                <div>` +
+                      result.system +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>Camara sau</p>
+                                <div>` +
+                      result.rearCamera +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>Camara trước</p>
+                                <div>` +
+                      result.frontCamera +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>CPU</p>
+                                <div>` +
+                      result.cpu +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>RAM</p>
+                                <div>` +
+                      result.ram +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>Bộ nhớ trong</p>
+                                <div>` +
+                      result.inside +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>Thẻ nhớ</p>
+                                <div>` +
+                      result.outside +
+                      `</div>
+                              </li>
+                              <li>
+                                <p>Dung lượng pin</p>
+                                <div>` +
+                      result.battery +
+                      `</div>
+                              </li>
+                    `;
+                    // console.log(result);
+                    $(".info").html(html);
+                  },
+                  error: function (xhr, status, error) {
+                    alert("Lỗi render product detail");
+                  },
+                });
+                function executePrice(
+                  fromDate,
+                  toDate,
+                  saleStatus,
+                  discount,
+                  price
+                ) {
+                  //format from date
+                  var date2 = new Date(fromDate);
+                  var day2 = date2.getDate();
+                  var month2 = date2.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+                  var year2 = date2.getFullYear();
+                  var dateString2 =
+                    year2.toString().padStart(2, "0") +
+                    "-" +
+                    month2.toString().padStart(2, "0") +
+                    "-" +
+                    day2;
+                  //format from date
+                  var date3 = new Date(toDate);
+                  var day3 = date3.getDate();
+                  var month3 = date3.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+                  var year3 = date3.getFullYear();
+                  var dateString3 =
+                    year3.toString().padStart(2, "0") +
+                    "-" +
+                    month3.toString().padStart(2, "0") +
+                    "-" +
+                    day3;
+                  //format date now
+                  var now = new Date();
+                  var currentDate = now.toISOString();
+                  var date1 = new Date(currentDate);
+                  var day1 = date1.getDate();
+                  var month1 = date1.getMonth() + 1; // Lưu ý: tháng trong JavaScript bắt đầu từ 0, nên cần cộng thêm 1
+                  var year1 = date1.getFullYear();
+                  var dateString1 =
+                    year1.toString().padStart(2, "0") +
+                    "-" +
+                    month1.toString().padStart(2, "0") +
+                    "-" +
+                    day1;
+                  //compare date
+                  var nowDate = new Date(dateString1);
+                  var from = new Date(dateString2);
+                  var to = new Date(dateString3);
+
+                  if (nowDate >= from && nowDate <= to && saleStatus) {
+                    return (
+                      numberWithCommas(price - (price * discount) / 100) +
+                      `<u>đ</u>  <del style="color:grey;">` +
+                      numberWithCommas(price) +
+                      `<u>đ</u></del>`
+                    );
+                  } else {
+                    return numberWithCommas(price) + `<u>đ</u>`;
+                  }
+                }
+                //render image
+
+                $.ajax({
+                  type: "GET",
+                  url: "http://localhost:9090/gallery/findByProduct/" + id,
+                  dataType: "json",
+                  success: function (result, status, xhr) {
+                    result.forEach((item) => {
+                      $(".product-gallery").append(
+                        `<img
+                        src="/img/products/` +
+                          item.image +
+                          `"
+                        alt=""
+                        onclick="changeImage(this.src,` +
+                          id +
+                          `,` +
+                          item.id +
+                          ` )"
+                      />`
+                      );
+                    });
+                  },
+                  error: function (xhr, status, error) {
+                    alert("Lỗi render gallery");
+                  },
+                });
+
+                //change image
+                function changeImage(fileName, id, colorId) {
+                  let img = document.querySelector("#mainImage");
+                  img.setAttribute("src", fileName);
+
+                  // console.log("id: "+id+"/color: "+colorId);
+                  //render detail
+                  //   $.ajax({
+                  //     type: "GET",
+                  //     url:
+                  //       "http://localhost:9090/product/findDetailProduct?id=" +
+                  //       id +
+                  //       "&color=" +
+                  //       colorId,
+                  //     dataType: "json",
+                  //     success: function (result, status, xhr) {
+                  //       //product name
+                  //       $(".product-name").html(result.productName+` `+result.colorName);
+                  //       // price
+                  //       $("#price").html(numberWithCommas(result.price));
+                  //       // amount
+                  //       $("#amount").html(result.amount);
+                  //       // image
+                  //       document.getElementById("mainImage").src =
+                  // "/img/products/" + result.image;
+
+                  //       let html =
+                  //         `
+                  //       <li>
+                  //                   <p>Màn hình</p>
+                  //                   <div>` +
+                  //         result.screen +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>Hệ điều hành</p>
+                  //                   <div>` +
+                  //         result.system +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>Camara sau</p>
+                  //                   <div>` +
+                  //         result.rearCamera +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>Camara trước</p>
+                  //                   <div>` +
+                  //         result.frontCamera +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>CPU</p>
+                  //                   <div>` +
+                  //         result.cpu +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>RAM</p>
+                  //                   <div>` +
+                  //         result.ram +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>Bộ nhớ trong</p>
+                  //                   <div>` +
+                  //         result.inside +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>Thẻ nhớ</p>
+                  //                   <div>` +
+                  //         result.outside +
+                  //         `</div>
+                  //                 </li>
+                  //                 <li>
+                  //                   <p>Dung lượng pin</p>
+                  //                   <div>` +
+                  //         result.battery +
+                  //         `</div>
+                  //                 </li>
+                  //       `;
+                  //       console.log(result);
+                  //       // $(".info").html(html);
+                  //     },
+                  //     error: function (xhr, status, error) {
+                  //       alert("Lỗi render product detail");
+                  //     },
+                  //   });
+                }
+              </script>
+              <div class="related-products-wrapper">
+                <h2 class="related-products-title">Sản phẩm liên quan</h2>
+                <div class="related-products-carousel relate-product">
+                  <!-- <div class="single-product">
+                    <div class="product-f-image">
+                      <img src="/img/products/600_redmi-10c.png" alt="" />
+                      <div class="product-hover">
+                        <a href="" class="add-to-cart-link"
+                          ><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a
+                        >
+                        <a href="single-product.html?id" class="view-details-link"
+                          ><i class="fa fa-link"></i> Xem Chi Tiết</a
+                        >
+                      </div>
+                    </div> 
+
+                    <h2><a href="">Sony Smart TV - 2015</a></h2>
+
+                    <div class="product-carousel-price">
+                      <ins>7000000</ins><ins>VNĐ</ins> <del>10000000</del>VNĐ
+                    </div>
+                  </div> -->
+                  <!-- 
+                  <div class="single-product">
+                    <div class="product-f-image">
+                      <img
+                        src="/img/products/600_iphone_11_trang_xtsmart.jpg"
+                        alt=""
+                      />
+                      <div class="product-hover">
+                        <a href="" class="add-to-cart-link"
+                          ><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a
+                        >
+                        <a href="" class="view-details-link"
+                          ><i class="fa fa-link"></i> Xem chi tiết</a
+                        >
+                      </div>
+                    </div>
+
+                    <h2><a href="">Apple new mac book 2015 March </a></h2>
+                    <div class="product-carousel-price">
+                      <ins>7000000</ins><ins>VNĐ</ins> <del>10000000</del>VNĐ
+                    </div>
+                  </div>
+                  <div class="single-product">
+                    <div class="product-f-image">
+                      <img src="/img/products/600_Realme_C11_2021.png" alt="" />
+                      <div class="product-hover">
+                        <a href="" class="add-to-cart-link"
+                          ><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a
+                        >
+                        <a href="" class="view-details-link"
+                          ><i class="fa fa-link"></i> Xem chi tiết</a
+                        >
+                      </div>
+                    </div>
+
+                    <h2><a href="">Apple new i phone 6</a></h2>
+
+                    <div class="product-carousel-price">
+                      <ins>7000000</ins><ins>VNĐ</ins> <del>10000000</del>VNĐ
+                    </div>
+                  </div>
+                  <div class="single-product">
+                    <div class="product-f-image">
+                      <img
+                        src="/img/products/600_iphone_12_pro_max_trang_4.png"
+                        alt=""
+                      />
+                      <div class="product-hover">
+                        <a href="" class="add-to-cart-link"
+                          ><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a
+                        >
+                        <a href="" class="view-details-link"
+                          ><i class="fa fa-link"></i> Xem chi tiết</a
+                        >
+                      </div>
+                    </div>
+
+                    <h2><a href="">Sony playstation microsoft</a></h2>
+
+                    <div class="product-carousel-price">
+                      <ins>7000000</ins><ins>VNĐ</ins> <del>10000000</del>VNĐ
+                    </div>
+                  </div>
+                  <div class="single-product">
+                    <div class="product-f-image">
+                      <img
+                        src="/img/products/600_iPhone_14_pro_trang_18.png"
+                        alt=""
+                      />
+                      <div class="product-hover">
+                        <a href="" class="add-to-cart-link"
+                          ><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a
+                        >
+                        <a href="" class="view-details-link"
+                          ><i class="fa fa-link"></i> Xem chi tiết</a
+                        >
+                      </div>
+                    </div>
+
+                    <h2><a href="">Sony Smart Air Condtion</a></h2>
+
+                    <div class="product-carousel-price">
+                      <ins>7000000</ins><ins>VNĐ</ins> <del>10000000</del>VNĐ
+                    </div>
+                  </div>
+                  <div class="single-product">
+                    <div class="product-f-image">
+                      <img
+                        src="/img/products/600_iphone_8_plus_silver_xtsmart.jpg"
+                        alt=""
+                      />
+                      <div class="product-hover">
+                        <a href="" class="add-to-cart-link"
+                          ><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a
+                        >
+                        <a href="" class="view-details-link"
+                          ><i class="fa fa-link"></i> Xem chi tiết</a
+                        >
+                      </div>
+                    </div>
+
+                    <h2><a href="">Samsung gallaxy note 4</a></h2>
+
+                    <div class="product-carousel-price">
+                      <ins>7000000</ins><ins>VNĐ</ins> <del>10000000</del>VNĐ
+                    </div>
+                  </div> -->
+                </div>
+                <script>
+                  function numberWithCommas(x) {
+                    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                  }
+                  var cateId = urlParams.get("category");
+                  console.log(cateId);
+                  $.ajax({
+                    type: "GET",
+                    url: "http://localhost:9090/product/findByCate/" + cateId,
+                    dataType: "json",
+                    success: function (result, status, xhr) {
+                      // console.log("find by cate");
+                      // console.log(result);
+                      result.forEach((item) => {
+                        $(".relate-product").append(
+                          `<div class="single-product">
+                              <div class="product-f-image">
+                                <img src="/img/products/` +
+                            item.productImage +
+                            `" alt="" style="width:80%;"/>
+                                <div class="product-hover">
+                                  <a onclick="addToCart(` +
+                            item.id +
+                            `,` +
+                            item.colorId +
+                            `,` +
+                            1 +
+                            `)" class="add-to-cart-link"
+                                    ><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a
+                                  >
+                                  <a href="single-product.html?id=` +
+                            item.id +
+                            `&color=` +
+                            item.colorId +
+                            `&category=` +
+                            item.category.id +
+                            `" class="view-details-link"
+                                    ><i class="fa fa-link"></i> Xem Chi Tiết</a
+                                  >
+                                </div>
+                              </div>
+
+                              <h2><a href="">` +
+                            item.productName +
+                            ` ` +
+                            item.colorName +
+                            `</a></h2>
+
+                              <div class="product-carousel-price">
+                                <ins>` +
+                            executePrice(
+                              item.fromDate,
+                              item.toDate,
+                              item.saleStatus,
+                              item.discount,
+                              item.price
+                            ) +
+                            `</ins><ins>
+                              </div>
+                      </div>`
+                        );
+                      });
+                    },
+                    error: function (xhr, status, error) {
+                      alert("Lỗi render gallery");
+                    },
+                  });
+                </script>
+              </div>
+
+              <div class="full-width-content">
+                <div class="heading">
+                  <h3 id="title-review">Đánh giá về điện thoại</h3>
+                </div>
+                <form action="" id="review">
+                  <!-- <div class="row">
+                    <div class="col-md-4">
+                      <input
+                        type="text"
+                        id="nameContent"
+                        name="nameContent"
+                        placeholder="Họ tên *"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <input
+                        type="email"
+                        id="emailContent"
+                        name="emailContent"
+                        placeholder="Email"
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <input
+                        type="text"
+                        id="phoneContent"
+                        name="phoneContent"
+                        placeholder="Số điện thoại"
+                      />
+                    </div>
+                  </div> -->
+                  <div class="row">
+                    <div class="col">
+                      <div class="control">
+                        <textarea
+                          id="reviewContent"
+                          name="reviewContent"
+                          placeholder="Nội dung. Tối thiểu 15 ký tự *"
+                          data-minlength="15"
+                          data-required="1"
+                          spellcheck="false"
+                          required
+                        ></textarea>
+                        <!-- <textarea  title="Nội dung" placeholder="Nội dung. Tối thiểu 15 ký tự *" name="ReviewContent" spellcheck="false" data-required="1" data-minlength="15" value="">
+                          </textarea> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <p class="note">
+                        * Để gửi bình luận, bạn cần nhập tối thiểu trường họ tên
+                        và nội dung
+                      </p>
+                    </div>
+                    <div class="col col-end">
+                      <button id="btnSubReview" type="submit">
+                        <i class="fa fa-send"></i> Gửi bình luận
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <div class="reviewContent"></div>
+                <script>
+                  //render comment by product id
+                  $.ajax({
+                    type: "GET",
+                    url: "http://localhost:9090/comment/findByProId/" + id,
+                    dataType: "json",
+                    success: function (result, status, xhr) {
+                      result.forEach((e) => {
+                        $(".reviewContent").append(
+                          `
+                          <div class="item">
+                            <div class="avt">
+                              <img src="/img/user.png" />
+                              </div>
+                            <div class="infor">
+                              <p>
+                                <strong class="name">` +
+                            e.fullname +
+                            `</strong>
+                              </p>
+                              <div class="content">
+                                ` +
+                            e.content +
+                            `
+                              </div>
+                            </div>
+                            </div>
+                            `
+                        );
+                      });
+                    },
+                    error: function (xhr, status, error) {
+                      alert("Lỗi render comment");
+                    },
+                  });
+
+                  $("#review").submit(function (event) {
+                    event.preventDefault();
+                    if (storage) {
+                      user = JSON.parse(storage);
+                      var comment =
+                        document.getElementById("reviewContent").value;
+                      // console.log(comment);
+                      var urlParams = new URLSearchParams(
+                        window.location.search
+                      );
+                      var productId = "";
+                      productId = urlParams.get("id");
+                      var now = new Date();
+                      var year = now.getFullYear();
+                      var month = now.getMonth() + 1; // Tháng bắt đầu từ 0
+                      var day = now.getDate();
+                      var hour = now.getHours();
+                      var minute = now.getMinutes();
+                      var second = now.getSeconds();
+
+                      var monthString=month<10 ? "-0"+month : month;
+                      var dayString=day<10 ? "-0"+day : day;
+
+                      var datetimeNow = year +  monthString  + dayString;
+
+                      var commentObject = {
+                        detail: comment,
+                        createdDate: datetimeNow,
+                        productId: productId,
+                        userEntity: {
+                          id: user.id,
+                        },
+                      };
+                      console.log(commentObject);
+                      $.ajax({
+                        type: "POST",
+                        url: "http://localhost:9090/comment/create",
+                        data: JSON.stringify(commentObject),
+                        dataType: "json",
+                        contentType: "application/json",
+                        encode: true,
+                        success: function (data) {
+                          //alert("Comment is saved successfully!");
+                          window.location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                          alert("Lỗi tạo comment");
+                        },
+                      });
+                      
+                    } else {
+                      alert("Đăng nhập để bình luận sản phẩm!!!");
+                    }
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top-area" id="footer">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-sm-5">
+            <div class="footer-about-us">
+              <h2><span>AT Store</span></h2>
+              <p style="padding-top: 11px">
+                AT Store là một trong những cửa hàng bán điện thoại cung cấp một
+                loạt các sản phẩm điện thoại từ các thương hiệu nổi tiếng như
+                Apple, Samsung, Oppo, Xiaomi và nhiều hãng khác. Khách hàng có
+                thể tìm thấy các mẫu điện thoại mới nhất và chất lượng nhất với
+                giá cả hợp lý tại cửa hàng của chúng tôi. Ngoài ra, chúng tôi
+                cũng cung cấp dịch vụ bảo hành và sửa chữa chuyên nghiệp để đảm
+                bảo rằng khách hàng của chúng tôi có thể sử dụng điện thoại của
+                mình một cách dễ dàng và thoải mái nhất. Chúng tôi luôn cam kết
+                mang lại sự hài lòng cao nhất cho khách hàng và hy vọng được
+                phục vụ bạn tại cửa hàng của chúng tôi.
+              </p>
+              <div class="footer-social">
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+
+                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3">
+            <div class="footer-menu">
+              <h2 class="footer-wid-title clw">Hỗ trợ 24/7</h2>
+              <ul>
+                <li>
+                  <a href="#"
+                    >Tư vấn mua hàng (Miễn phí) <br />
+                    1800 6601(Nhánh 1)
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    >Hỗ trợ kỹ thuật<br />
+                    1800 6601(Nhánh 2)
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    >Góp ý, khiếu nại (8h00 - 22h00)<br />
+                    1800 6616
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-4">
+            <div class="footer-widget contacts-widget">
+              <h2 class="footer-wid-title">Thông tin liên hệ</h2>
+              <div
+                class="footer-widget contacts-widget"
+                style="padding-top: 11px"
+              >
+                <ul
+                  style="list-style: none; padding-left: 0px"
+                  class="contact-info"
+                >
+                  <li>
+                    <h5>Công ty TNHH Thương Mại và Dịch Vụ Kỹ Thuật AT</h5>
+                  </li>
+                  <li style="display: flex">
+                    <i class="fa fa-envelope"></i
+                    ><a class="clg" href="mailto:needhelp@potisen.com"
+                      >&nbsp;&nbsp;admin@at-tech.com.vn</a
+                    >
+                  </li>
+                  <li>
+                    <i class="fa fa-phone-square"></i>
+                    <a href="tel:+926668880000" class="clg">
+                      &nbsp;0393 245 192</a
+                    ><br />
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-house"></i>
+                    <a
+                      target="_blank"
+                      class="clg"
+                      href="https://www.google.com/maps/place/C%C3%B4ng+ty+c%E1%BB%95+ph%E1%BA%A7n+th%C3%B4ng+tin+Hapro+(HaproInfo)/@21.0280165,105.8305581,17z/data=!4m15!1m8!3m7!1s0x3135ab9eed0fcdc1:0x444a9889dff6c7ff!2zMTFiIFAuIEPDoXQgTGluaCwgUXXhu5FjIFThu60gR2nDoW0sIMSQ4buRbmcgxJBhLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3b1!8m2!3d21.0280115!4d105.8327468!16s%2Fg%2F11gd398khg!3m5!1s0x3135ab9ec100e099:0x2d86d73c581fe41d!8m2!3d21.0276926!4d105.8326061!16s%2Fg%2F12qfb_xg5?hl=vi-VN"
+                      >Tầng 14, tòa nhà Hapro,11B Cát Linh, Phường Quốc Tử Giám,
+                      Quận Đống Đa, Thành phố Hà Nội.</a
+                    ><br />
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <img
+              src="/img/icon/Bo-Cong-Thuong-3.png"
+              style="padding-top: 30px; width: 150px"
+            />
+          </div>
+        </div>
+        <div class="row" style="margin-top: 30px; border-top: 3px solid gray">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <p style="margin-left: 30%; margin-top: 30px">
+              &copy; 2023, VietNam, AT Store.
+            </p>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Latest jQuery form server -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- jQuery sticky menu -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+
+    <!-- jQuery easing -->
+    <script src="js/jquery.easing.1.3.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+    <script>
+      //check amount
+
+      function checkAmount(amount) {
+        var total = parseInt(document.getElementById("amount").textContent);
+        // console.log(total);
+        if (amount > total) {
+          alert("Số lượng đặt vượt quá số lượng mặt hàng có!!!");
+          document.getElementById("quantity").value = total;
+        }
+        var quantity = document.getElementById("quantity").value;
+        document
+          .getElementById("add_to_cart_button")
+          .setAttribute(
+            "onclick",
+            "addToCart(" + id + "," + colorId + "," + quantity + ")"
+          );
+      }
+    </script>
+  </body>
+</html>

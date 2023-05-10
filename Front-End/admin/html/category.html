@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+      rel="stylesheet"
+    />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/category.js"></script>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="admin.html">Quản Lý Bán Hàng</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form> -->
+      <!-- Navbar-->
+      <ul class="navbar-nav m-auto me-lg-5">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+            id="userAccount"
+          >
+            <!-- <li><a class="dropdown-item" href="">Cài đặt</a></li>
+                        
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="">Đăng xuất</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" href="index.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                Thống kê
+              </a>
+              <div class="sb-sidenav-menu-heading">Interface</div>
+
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Danh Mục
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addCategory.html"
+                      >Thêm Danh Mục</a
+                    >
+                    <a class="nav-link btnCategory" href="./category.html"
+                      >Danh Sách Danh Mục</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts2"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Ảnh Sản Phẩm
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts2"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addGallery.html">Thêm Ảnh</a>
+                    <a class="nav-link btnGallery" href="./gallery.html"
+                      >Danh Sách Ảnh Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts5"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Màu Sắc
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts5"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addColor.html">Thêm Màu Sắc</a>
+                    <a class="nav-link btnColor" href="./color.html"
+                      >Danh Sách Màu Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts3"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Sản Phẩm
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts3"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addProduct.html"
+                      >Thêm Sản Phẩm</a
+                    >
+                    <a class="nav-link btnProduct" href="./product.html"
+                      >Danh Sách Sản Phẩm</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts9"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Giảm Giá
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts9"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addSale.html">Thêm Giảm Giá</a>
+                    <a class="nav-link btnSale" href="./sale.html"
+                      >Danh Sách Giảm Giá</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts4"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Tài Khoản
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts4"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnAccount" href="./account.html"
+                      >Danh Sách Tài Khoản</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts6"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Bình Luận
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts6"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnComment" href="./comment.html"
+                      >Danh Sách Bình Luân</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts7"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Slide
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts7"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./addSlide.html">Thêm Slide</a>
+                    <a class="nav-link btnSlide" href="./slide.html"
+                      >Danh Sách Slide</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div class="item">
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts8"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-columns"></i>
+                  </div>
+                  Quản Lý Đơn Hàng
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts8"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link btnOrder" href="./order.html"
+                      >Duyệt Đơn Hàng</a
+                    >
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:<p id="loginName" style="font-size: 13px; font-weight: bold;"></p> </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="card">
+            <div class="card-header">
+              <h2>Danh Sách Nhãn Hàng</h2>
+            </div>
+
+            <div class="card-body table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên Nhãn Hàng</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="content"></tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/datatables-simple-demo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      let user = {};
+      let storage = localStorage.getItem("userAdmin");
+      if (storage) {
+        user = JSON.parse(storage);
+
+        $("#userAccount").html(
+          `
+                    <li><a class="dropdown-item" style="font-size:12px; font-weight:bold; cursor:pointer;" href="">` +
+            user.fullname +
+            `</a></li>
+                    
+                    <li><hr class="dropdown-divider" /></li>
+                    
+                    <li><a class="dropdown-item" onclick="logout()" style="cursor:pointer;">Đăng xuất</a></li>
+              `
+        );
+        $("#loginName").html(user.fullname);
+      } else {
+        $("#userAccount").html(`
+              <a href="/Template_FrontEnd/login.html">Đăng nhập</a>
+              `);
+      }
+      function logout() {
+      
+        localStorage.removeItem("userAdmin");
+        window.location.href = "/Template_FrontEnd/login.html";
+      }
+    </script>
+    <script>
+      $(document).ready(function () {
+        $(".btnCategory").click(function (e) {
+          $.ajax({
+            type: "GET",
+            url: "http://localhost:9090/category/categories",
+            dataType: "json",
+            success: function (result, status, xhr) {
+              console.log(result);
+              let html = "";
+            
+              result.forEach((data) => {
+                console.log(data.id);
+                html +=
+                  `<tr><td>` +
+                  data.id +
+                  `</td><td>` +
+                  data.brand +
+                  `</td><td><img src="/img/brands/` +
+                  data.image +
+                  `" alt=""></td><td><a type="button" href="./addCategory.html?id=` +
+                  data.id +
+                  `" id="edit" class="btn btn-primary mr-2"><i class="far fa-edit text-white"></i></a><button type="button" class="btn btn-danger" id="delete" value="` +
+                  data.id +
+                  `"><i class="fas fa-trash-alt"></i></button></td></tr>`;
+              });
+              $("#content").html(html);
+            },
+            error: function (xhr, status, error) {
+              
+            },
+          });
+        });
+
+        //render data
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:9090/category/categories",
+          dataType: "json",
+          success: function (result, status, xhr) {
+            
+            let html = "";
+        
+            result.forEach((data) => {
+              console.log(data.id);
+              html +=
+                `<tr><td>` +
+                data.id +
+                `</td><td>` +
+                data.brand +
+                `</td><td><img src="/img/brands/` +
+                data.image +
+                `" alt=""></td><td><a type="button" href="./addCategory.html?id=` +
+                data.id +
+                `" id="edit"  class="btn btn-primary mr-2"><i class="far fa-edit text-white"></i></a><button type="button" value="` +
+                data.id +
+                `" class="btn btn-danger" id="delete"><i class="fas fa-trash-alt"></i></button></td></tr>`;
+            });
+            $("#content").html(html);
+          },
+          error: function (xhr, status, error) {
+            
+          },
+        });
+
+        //delete category
+
+        $(document).on("click", "#delete", function () {
+          var check = confirm("Bạn có muốn xóa danh mục này không!");
+          if (check) {
+            var id = $(this).val();
+            $.ajax({
+              url: "http://localhost:9090/category/deleteById/" + id,
+              type: "DELETE",
+              success: function (result) {
+                if (result != "Successful") {
+                  alert("Lỗi rằng buộc khóa ngoài");
+                } else {
+                  window.location.reload(true);
+                }
+              },
+              error: function (err) {
+                console.log(err);
+              },
+            });
+          }
+        });
+
+        
+      });
+    </script>
+
+  </body>
+</html>
